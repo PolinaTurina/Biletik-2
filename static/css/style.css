@@ -1,0 +1,16 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+.column{
+    background-color: #fbebeb;
+    flex-direction: column;
+    width: 80%;
+    padding: 20px;
+}
+body{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+
+}

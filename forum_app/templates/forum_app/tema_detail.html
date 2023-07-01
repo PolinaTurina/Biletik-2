@@ -1,9 +1,33 @@
 {%extends 'root.html'%}
 
 {%block content%}
+        <div class="column">
 
         {{tema_detail.title}}
         {{tema_detail.created_date}}
 
 
+
+        <form enctype="multipart/form-data" action="" method="POST" style="display: flex; flex-direction: column; align-items: flex-start;">
+                {%csrf_token%}
+                {{otvet_form.as_p}}
+                <button type="submit">Отправить</button>
+        </form>
+
+        
+        {%for otvet in otvets%}
+        <div style="display: flex; flex-direction: column; border: 1px solid #7c797954; padding: 10px;">
+                {{otvet.name}}
+                {{otvet.text}}
+                {{otvet.created_date}}
+
+                {%if otvet.image%}
+                <img src=" {{otvet.image.url}} " style="width: 300px;">
+                {%endif%}
+        </div>
+        {%endfor%}
+        
+
+
+ </div>       
 {%endblock%}

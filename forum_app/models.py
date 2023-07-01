@@ -17,8 +17,9 @@ class Tema(models.Model):
 class Otvet(models.Model):
     name = models.CharField(max_length=32, verbose_name='Автор')
     text = models.CharField(max_length=2000, verbose_name="Текст ответа")
-    image = models.ImageField(upload_to='%y%m%d', blank=True, null=True, verbose_name='Картинка')
+    image = models.ImageField(upload_to='%y/%m/%d', blank=True, null=True, verbose_name='Картинка')
     created_date = models.DateTimeField(auto_now_add=True, verbose_name='Дата')
+    tema = models.ForeignKey(Tema, on_delete=models.CASCADE)
 
     class Meta:
         ordering = ['-created_date']
@@ -26,4 +27,4 @@ class Otvet(models.Model):
         verbose_name_plural = ['Ответы']
 
     def __str__(self):
-        return self.name ,self.text
+        return self.name, self.text
