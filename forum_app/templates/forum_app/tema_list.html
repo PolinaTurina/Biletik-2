@@ -1,6 +1,13 @@
 {%extends 'root.html'%}
 
 {%block content%}
+
+<form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{tema_form.as_p}}
+    <button type="submit">Отправить</button>
+</form>
+
     {% for tema in tema_list%}
         {{tema.title}}
     {%endfor%}
