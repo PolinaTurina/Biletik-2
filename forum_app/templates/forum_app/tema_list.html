@@ -9,7 +9,7 @@
 </form>
 
     {% for tema in tema_list%}
-        {{tema.title}}
+        <a href="/forum-app/tema_detail/{{tema.pk}}/">{{tema.title}}</a>
     {%endfor%}
 
 {%endblock%}

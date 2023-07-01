@@ -12,3 +12,18 @@ class Tema(models.Model):
 
     def __str__(self):
         return self.title
+
+
+class Otvet(models.Model):
+    name = models.CharField(max_length=32, verbose_name='Автор')
+    text = models.CharField(max_length=2000, verbose_name="Текст ответа")
+    image = models.ImageField(upload_to='%y%m%d', blank=True, null=True, verbose_name='Картинка')
+    created_date = models.DateTimeField(auto_now_add=True, verbose_name='Дата')
+
+    class Meta:
+        ordering = ['-created_date']
+        verbose_name = ['Ответ']
+        verbose_name_plural = ['Ответы']
+
+    def __str__(self):
+        return self.name ,self.text
