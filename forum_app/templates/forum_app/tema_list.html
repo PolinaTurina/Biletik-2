@@ -1,0 +1,8 @@
+{%extends 'root.html'%}
+
+{%block content%}
+    {% for tema in tema_list%}
+        {{tema.title}}
+    {%endfor%}
+
+{%endblock%}
