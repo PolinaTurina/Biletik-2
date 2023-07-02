@@ -8,6 +8,9 @@
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
 </head>
 <body>
+    <div>
+        <a href="{% url 'forum_app:tema_list' %}">к темам</a>
+    </div>
     {%block content%}
     {%endblock%}
 </body>

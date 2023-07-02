@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect
 from django.urls import reverse
 from .models import *
 from .forms import *
+from django.db.models import Q
 
 #добавляет темы на форме
 def tema_list_view(request):
@@ -20,8 +21,8 @@ def tema_list_view(request):
 
 #добавляет комментарии с картинкой и без ПОД темой
 def tema_detail_view(request, tema_pk):
-    tema = Tema.objects.get(pk=tema_pk)
 
+    tema = Tema.objects.get(pk=tema_pk)
     if request.method == "POST":
         form = OtvetForm(data=request.POST, files=request.FILES)
         if form.is_valid():
@@ -33,7 +34,12 @@ def tema_detail_view(request, tema_pk):
     else:
         form = OtvetForm()
 
-    otvets = Otvet.objects.filter(tema=tema)
+    q = request.GET.get('q', )
+    if q:
+        otvets = Otvet.objects.filter(Q(text__icontains=q) | Q(name__icontains=q), tema=tema )
+    else:
+        otvets = Otvet.objects.filter(tema=tema)
+    # otvets = Otvet.objects.filter(tema=tema)
 
     context = {'tema_detail': tema, 'otvets': otvets, 'otvet_form': form}
     return render(request, 'forum_app/tema_detail.html', context)

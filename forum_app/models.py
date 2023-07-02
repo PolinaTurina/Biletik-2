@@ -7,8 +7,8 @@ class Tema(models.Model):
 
     class Meta:
         ordering = ['-id']
-        verbose_name = ['Темы']
-        verbose_name_plural = ['Темы']
+        verbose_name = ('Темы')
+        verbose_name_plural = ('Темы')
 
     def __str__(self):
         return self.title
@@ -23,8 +23,9 @@ class Otvet(models.Model):
 
     class Meta:
         ordering = ['-created_date']
-        verbose_name = ['Ответ']
-        verbose_name_plural = ['Ответы']
+        verbose_name = ('Ответ')
+        verbose_name_plural = ('Ответы')
 
     def __str__(self):
-        return self.name, self.text
+        return self.name
+ 

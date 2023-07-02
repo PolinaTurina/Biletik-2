@@ -3,18 +3,22 @@
 {%block content%}
         <div class="column">
 
+        <form action="" method="get">
+                <input type="search" type=text name="q" placeholder="Найти...">
+                <button style="width: 50px;" type="submit">Искать</button>
+        </form>
+
         {{tema_detail.title}}
         {{tema_detail.created_date}}
 
 
-
-        <form enctype="multipart/form-data" action="" method="POST" style="display: flex; flex-direction: column; align-items: flex-start;">
+        <form enctype="multipart/form-data" action="" method="POST"
+        style="display: flex; flex-direction: column; align-items: flex-start;">
                 {%csrf_token%}
                 {{otvet_form.as_p}}
                 <button type="submit">Отправить</button>
         </form>
 
-        
         {%for otvet in otvets%}
         <div style="display: flex; flex-direction: column; border: 1px solid #7c797954; padding: 10px;">
                 {{otvet.name}}
@@ -27,7 +31,5 @@
         </div>
         {%endfor%}
         
-
-
  </div>       
 {%endblock%}
